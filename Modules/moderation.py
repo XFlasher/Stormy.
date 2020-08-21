@@ -164,7 +164,7 @@ class Moderation(commands.Cog):
                     amemb.set_footer(text = f'© Модерация | {self.Client.user.name}',icon_url= self.Client.user.avatar_url)
 
                     lamemb = discord.Embed(title = 'Голосовой мут снят.', color = discord.Color.blurple())
-                    lamemb.add_field(name = 'Размутил:', value = f'{self.Client.user.mention}', inline = True)
+                    lamemb.add_field(name = 'Размутил:', value = f'{ctx.author.mention}', inline = True)
                     lamemb.add_field(name = 'Причина:', value = f'{reason}', inline = True)
                     lamemb.set_footer(text = f'© Модерация | {self.Client.user.name}',icon_url= self.Client.user.avatar_url)
 
