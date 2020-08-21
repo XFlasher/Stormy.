@@ -62,7 +62,7 @@ class DB():
             else:
                 return None
         except Exception as e:
-            print('[DB] error')
+            print(f'[DB] error\n {e}')
 
     def Ord_By(self, Table, OrdName, OrdBy, Limit):
         '''Сортировка данных по заданным критериям и лимиту'''
