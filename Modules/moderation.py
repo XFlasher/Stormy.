@@ -212,7 +212,7 @@ class Moderation(commands.Cog):
             suggest = NSA
         else:
             suggest = suggest.mention
-        autorole = ctx.guild.get_role(SysDB.F_one('GuildSett', 'autotole', 'id', ctx.guild.id))
+        autorole = ctx.guild.get_role(SysDB.F_one('GuildSetts', 'autotole', 'id', ctx.guild.id))
         if autorole is None:
             autorole = NSA
         else:
