@@ -84,7 +84,7 @@ class DB():
         self.db.commit()
 
 
-SystemWay = 'Data/DB/System.sqlite'
+SystemWay = 'Data/DB/System.sqlite3'
 
 SysDB = DB(SystemWay)
 
