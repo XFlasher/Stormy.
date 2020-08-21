@@ -1,6 +1,5 @@
 discord
 discord.py
-sqlite3
 os
 asyncio
 random
