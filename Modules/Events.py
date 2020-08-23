@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-from DB import SysDB
 
 class Events(commands.Cog):
     def __init__(self, Client):
@@ -24,7 +23,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        role = member.guild.get_role(SysDB.F_one('GuildSetts', 'autorole', 'id', member.guild.id))
+        role = member.guild.get_role(695658572968886313)
         if role is None:
             pass
         else:

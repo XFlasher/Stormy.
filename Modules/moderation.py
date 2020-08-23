@@ -2,7 +2,6 @@ import asyncio
 
 import discord
 from discord.ext import commands
-from DB import SysDB
 from .Utils.counters import cooldcounter, messages_count
 
 
@@ -189,74 +188,6 @@ class Moderation(commands.Cog):
             pass
 
 
-
-    @commands.group(description = 'Конфигурация сервера.', hidden = False)
-    @commands.has_permissions(administrator = True)
-    async def config(self, ctx):
-        if ctx.invoked_subcommand is None:
-            cfg = discord.Embed(title = 'Настройка сервера:', description = 'Ниже перечислены команды для конфигурации сервера', color = discord.Color.blurple())
-            cfg.add_field(name = '`config suggest`', value = '**Упомяните канал для установки канала предложений.**', inline = False)
-            cfg.add_field(name = '`config autorole`', value = '**Упомяните роль для установки автороли**', inline = False)
-            cfg.add_field(name = '`config current`', value = '**Текущие параметры конфигурации**', inline = False)
-            cfg.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-            await ctx.send(embed = cfg, delete_after = 30)
-        else:
-            pass
-
-    @config.command()
-    async def current(self, ctx):
-        NSA = 'Не установлено'
-        suggest = self.Client.get_channel(SysDB.F_one('GuildSetts', 'suggest', 'id', ctx.guild.id))
-        if suggest is None:
-            suggest = NSA
-        else:
-            suggest = suggest.mention
-        autorole = ctx.guild.get_role(SysDB.F_one('GuildSetts', 'autotole', 'id', ctx.guild.id))
-        if autorole is None:
-            autorole = NSA
-        else:
-            autorole = autorole.mention
-        current = discord.Embed(title = 'Настройка сервера:', description = 'Ниже предоставлены текущие параметры конфигурации сервера:', color = discord.Color.blurple())
-        current.add_field(name = '`Канал предложений`', value = f'**{suggest}**')
-        current.add_field(name = '`Авто-роль при входе`', value = f'**{autorole}**')
-        current.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-    @config.command()
-    async def autorole(self, ctx, role: discord.Role = None):
-        if role:
-            SysDB.Upd('GuildSetts', 'autorole', role.id, 'id', ctx.guild.id)
-
-            embed = discord.Embed(title = 'Авто-роль успешно установлена `✔️`', color = discord.Color.blurple())
-            embed.add_field(name = '**Установлено:**', value = f'{role.mention}')
-            embed.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-            await ctx.send(embed = embed, delete_after = 12)
-        else:
-            SysDB.Upd('GuildSetts', 'autorole', 'NULL', 'id', ctx.guild.id)
-
-            embed = discord.Embed(title = 'Авто-роль успешно сброшена `✔️`', color = discord.Color.orange())
-            embed.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-            await ctx.send(embed = embed, delete_after = 12)
-
-    @config.command()
-    async def suggest(self, ctx, channel: discord.TextChannel = None):
-        if channel:
-            SysDB.Upd('GuildSetts', 'suggest', channel.id, 'id', ctx.guild.id)
-
-            embed = discord.Embed(title = 'Канал предложений успешно установлен `✔️`', color = discord.Color.blurple())
-            embed.add_field(name = '**Установлено:**', value = f'{channel.mention}')
-            embed.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-            await ctx.send(embed = embed, delete_after = 12)
-        else:
-            SysDB.Upd('GuildSetts', 'suggest', 'NULL', 'id', ctx.guild.id)
-
-            embed = discord.Embed(title = 'Канал предложений успешно сброшен `✔️`', color = discord.Color.orange())
-            embed.set_footer(text = f'© Конфигурация сервера | {self.Client.user.name}')
-
-            await ctx.send(embed = embed, delete_after = 12)
 
 def setup(Client):
     Client.add_cog(Moderation(Client))

@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-from DB import SysDB
 
 
 class Other(commands.Cog):
@@ -12,7 +11,7 @@ class Other(commands.Cog):
         if args is None:
             return await ctx.send(f'**{ctx.author.mention}, Вы не указали текст предложения.**', delete_after = 12)
         else:
-            channel = self.Client.get_channel(SysDB.F_one('GuildSetts', 'suggest', 'id', ctx.guild.id))
+            channel = self.Client.get_channel(746466289060413541)
             if channel is None:
                 return await ctx.send(f'**{ctx.author.mention}, канал для предложений не настроен, обратитесь к администрации.**', delete_after = 12)
             else:
