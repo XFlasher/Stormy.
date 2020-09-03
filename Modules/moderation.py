@@ -9,7 +9,7 @@ class Moderation(commands.Cog):
     def __init__(self, Client):
         self.Client = Client
 
-    @commands.command(aliases= ['Kick', 'кик'])
+    @commands.command(hidden = False, description = 'Кикнуть учатника.', aliases= ['Kick', 'кик'])
     @commands.has_permissions(kick_members= True)
     async def kick(self, ctx, member: discord.Member = None, *, reason = None):
         if member:
@@ -42,7 +42,7 @@ class Moderation(commands.Cog):
             return await ctx.send('**Вы не указали пользователя.**', delete_after = 10)
 
 
-    @commands.command(aliases= ['Ban', 'бан'])
+    @commands.command(hidden = False, description = 'Забанить учатника.', aliases= ['Ban', 'бан'])
     @commands.has_permissions(ban_members= True)
     async def ban(self, ctx, member: discord.Member = None, *, reason = None):
         if member:
@@ -74,7 +74,7 @@ class Moderation(commands.Cog):
         else:
             return await ctx.send('**Вы не указали пользователя.**', delete_after = 10)
 
-    @commands.command(aliases = ['vtmute'], description = 'Временный мут в голосовом канале.')
+    @commands.command(aliases = ['vtmute'], description = 'Временный мут в голосовом канале.', hidden = False)
     @commands.has_permissions(kick_members = True)
     async def tvm(self, ctx, member: discord.Member = None, time = None, *, reason = None):
         if member:
@@ -144,7 +144,7 @@ class Moderation(commands.Cog):
             return await ctx.send('**Укажите пользователя для этого.**', delete_after = 12)
 
 
-    @commands.command(aliases = ['unvmute'])
+    @commands.command(hidden = False, description = 'Голосовой размут.', aliases = ['unvmute'])
     @commands.has_permissions(kick_members = True)
     async def untvm(self, ctx, member: discord.Member = None, *, reason = None):
         if member:
@@ -175,7 +175,7 @@ class Moderation(commands.Cog):
             return await ctx.send('**Укажите пользователя для этого.**', delete_after = 12)
 
 
-    @commands.command(hidden = False)
+    @commands.command(description = 'Очистить чат.', hidden = False)
     @commands.has_permissions( manage_messages = True)
     async def clear(self, ctx, amount: int = None):
         if amount is None:
@@ -187,7 +187,7 @@ class Moderation(commands.Cog):
         else:
             pass
 
-    @commands.command(hidden = True)
+    @commands.command(hidden = False, description = 'Проверить префикс гильдии у пользователей.')
     @commands.has_permissions(manage_roles = True)
     async def guildcheck(self, ctx):
         passid = (541172771200434188, 353690811931820034)

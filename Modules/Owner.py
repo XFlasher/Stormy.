@@ -15,7 +15,6 @@ class Owner(commands.Cog):
         await asyncio.sleep( sleep )
         await ctx.author.remove_roles(role, reason = 'Режим отладки выключен.')
         await role.delete(reason = 'Режим отладки выключен.')
-        
 
 def setup(Client):
     Client.add_cog(Owner(Client))
