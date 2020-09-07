@@ -52,7 +52,7 @@ class Other(commands.Cog):
 async def guildav(self, ctx):
     embed = discord.Embed(title = 'Аватар сервера:', color = discord.Color.blurple())
     embed.set_image(url = ctx.guild.icon_url)
-    embed.set_footer(text = '© Stormy | Все права защищены.', icon_url= self.Client.user.avatar_url)
+    embed.set_footer(text = f'© {self.Client.user.name} | Все права защищены.', icon_url= self.Client.user.avatar_url)
 
     await ctx.send(embed = embed, delete_after = 16 )
 

