@@ -191,7 +191,7 @@ class Moderation(commands.Cog):
     @commands.has_permissions(manage_roles = True)
     async def guildcheck(self, ctx):
         passid = (541172771200434188, 353690811931820034)
-        pex = ' | strm.❤'
+        pex = ' | Imp.❤'
         changed_members = 0
         guild_role = discord.utils.get(ctx.guild.roles, id = 709748813199310929)
         for member in ctx.guild.members:

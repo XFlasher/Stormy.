@@ -26,7 +26,7 @@ class Events(commands.Cog):
         passid = (541172771200434188, 353690811931820034)
         if after.id in passid:
             return
-        pex = ' | strm.❤'
+        pex = ' | Imp.❤'
         guild_role = discord.utils.get(after.guild.roles, id = 709748813199310929)
         if guild_role is None:
             pass
