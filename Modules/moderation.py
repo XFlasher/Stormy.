@@ -187,28 +187,6 @@ class Moderation(commands.Cog):
         else:
             pass
 
-    @commands.command(hidden = False, description = 'Проверить префикс гильдии у пользователей.')
-    @commands.has_permissions(manage_roles = True)
-    async def guildcheck(self, ctx):
-        passid = (541172771200434188, 353690811931820034)
-        pex = ' | Imp.❤'
-        changed_members = 0
-        guild_role = discord.utils.get(ctx.guild.roles, id = 709748813199310929)
-        for member in ctx.guild.members:
-            if member.id in passid:
-                pass
-            else:
-                if guild_role in member.roles:
-                    nick = member.nick
-                    if nick == None:
-                        nick = member.name
-                    if pex in str(nick):
-                        pass
-                    else:
-                        changed_members += 1
-                        await member.edit(nick = f'{nick}{pex}')
-        await ctx.send(f'**Успешно отредактировано  {members_count(changed_members)}**', delete_after = 12)
-
 
 
 
